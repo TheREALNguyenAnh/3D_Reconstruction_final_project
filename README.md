@@ -29,7 +29,7 @@
 - [ ] Write `mask_generator.py`
 - **Logic:** Use `rembg` library to generate binary masks. Save to `masks/` folder.
 
-> **Note:** Backgrounds actually HELP feature matching. Only use this if the reconstruction fails due to moving background objects.
+- **Note:** Backgrounds actually HELP feature matching. Only use this if the reconstruction fails due to moving background objects.
 
 ---
 
