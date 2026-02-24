@@ -31,7 +31,7 @@ pip install rembg
 
 - Film video of a specular non-transparent object
 - Use sunlight; preferably avoid shadows if possible
-- Obtain a sample video or dataset that is confirmed to be good enough for reconstruction
+- Obtain a second sample video or dataset that is confirmed to be good enough for reconstruction as a control to see if the problem is our data or our code.
 
 ---
 
