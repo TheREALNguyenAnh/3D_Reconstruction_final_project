@@ -4,6 +4,32 @@
 
 ---
 
+## Installation
+
+### Required Packages
+
+```bash
+pip install opencv-python open3d
+```
+
+### COLMAP
+
+```bash
+# Ubuntu/Debian
+sudo apt-get install colmap
+
+# Or build from source: https://colmap.github.io/install.html
+```
+
+### Optional
+
+```bash
+# For AI background removal (only if needed)
+pip install rembg
+```
+
+---
+
 ## Phase 0: Data Collection
 
 - Film video of a specular non-transparent object
