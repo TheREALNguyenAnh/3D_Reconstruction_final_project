@@ -14,12 +14,9 @@ pip install opencv-python open3d
 
 ### COLMAP
 
-```bash
-# Ubuntu/Debian
-sudo apt-get install colmap
+Download the Windows `.zip` release from [COLMAP Releases](https://github.com/colmap/colmap/releases) and I will run the `.exe` as a subprocess.
 
-# Or build from source: https://colmap.github.io/install.html
-```
+> **Warning:** If you use `sudo apt-get install colmap` on Linux, it will work for sparse reconstruction, but **dense reconstruction (Phase 3.2) requires CUDA** which the apt version doesn't support. You would need to run dense reconstruction elsewhere (e.g., a machine with NVDIA GPU). We'll ask the teacher about alternatives later. I you use Windows entirely ignore this warning. just use the COLMAP.bat normally.
 
 ### Optional
 
@@ -71,7 +68,7 @@ pip install rembg
 - [ ] Write `run_colmap.py` (Part 1)
 - **Logic:** Use `subprocess` to call `colmap feature_extractor`
   - Point it directly to the `images/` folder
-  - Only pass the mask path if Task 1.3 was needed
+  - Use the mask path if we removed background
 
 ### 2.3 Matcher Script
 - [ ] Update `run_colmap.py` (Part 2)
