@@ -41,7 +41,7 @@ pip install rembg
 **Target:** Turn a video file into a clean folder of images.
 
 ### 1.1 Frame Extraction Script
-- [ ] Write `video_processor.py`
+- [x] Write `video_processor.py`
 - **Input:** `.mp4` path
 - **Logic:** Use OpenCV to save every few frames to an `images/` folder
 
