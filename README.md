@@ -12,11 +12,15 @@
 pip install opencv-python open3d
 ```
 
-### COLMAP
+### PyColmap (CUDA)
 
-Download the Windows `.zip` release from [COLMAP Releases](https://github.com/colmap/colmap/releases) and I will run the `.exe` as a subprocess.
+We use PyColmap with CUDA support for GPU-accelerated reconstruction:
 
-> **Warning:** If you use `sudo apt-get install colmap` on Linux, it will work for sparse reconstruction, but **dense reconstruction (Phase 3.2) requires CUDA** which the apt version doesn't support. You would need to run dense reconstruction elsewhere (e.g., a machine with NVDIA GPU). We'll ask the teacher about alternatives later. I you use Windows entirely ignore this warning. just use the COLMAP.bat normally.
+```bash
+pip install pycolmap-cuda12
+```
+
+> **Note:** This requires an NVIDIA GPU with CUDA 12 support. PyColmap provides a Python API directly, no subprocess calls needed.
 
 ### Optional
 
@@ -62,22 +66,22 @@ pip install rembg
 **Target:** Get a sparse point cloud (dots) from the images.
 
 ### 2.1 Manual Test
-- [ ] Install COLMAP
-- [ ] Run the GUI manually on a sample dataset to ensure it works on your machine
+- [x] Install PyColmap-cuda12
+- [ ] Run on a sample dataset to ensure it works on your machine
 
 ### 2.2 Feature Extraction Script
-- [ ] Write `run_colmap.py` (Part 1)
-- **Logic:** Use `subprocess` to call `colmap feature_extractor`
+- [x] Write `run_colmap.py` (Part 1)
+- **Logic:** Use `pycolmap.extract_features()` with GPU
   - Point it directly to the `images/` folder
   - Use the mask path if we removed background
 
 ### 2.3 Matcher Script
-- [ ] Update `run_colmap.py` (Part 2)
-- **Logic:** Call `colmap exhaustive_matcher` (or `sequential_matcher` if video frames are ordered)
+- [x] Update `run_colmap.py` (Part 2)
+- **Logic:** Use `pycolmap.match_sequential()` for video frames
 
 ### 2.4 Sparse Reconstruction Script
-- [ ] Update `run_colmap.py` (Part 3)
-- **Logic:** Call `colmap mapper`
+- [x] Update `run_colmap.py` (Part 3)
+- **Logic:** Use `pycolmap.incremental_mapping()`
   - Generates the camera poses and sparse points
 
 ### 2.5 Export Data

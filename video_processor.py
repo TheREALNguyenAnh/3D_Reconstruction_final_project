@@ -39,3 +39,8 @@ def test():
     output_dir = "test_dir"
     extract_frames(video_path, output_dir)
 
+def main():
+    test()
+
+if __name__ == "__main__":
+    main()
