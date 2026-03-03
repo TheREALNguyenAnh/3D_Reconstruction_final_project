@@ -50,7 +50,7 @@ pip install rembg
 - **Logic:** Use OpenCV to save every few frames to an `images/` folder
 
 ### 1.2 Blur Detection Filter
-- [ ] Update `video_processor.py`
+- [x] Update `video_processor.py`
 - **Logic:** Calculate Laplacian Variance for each frame. If variance < threshold (blurry), discard it.
 
 ### 1.3 [OPTIONAL] AI Background Removal
