@@ -1,6 +1,8 @@
 import os
 import cv2
 
+THRESHOLD = 100.0
+
 #Extract frames from a video file at a given interval and save them as images.
 #video_path - Path to the input video (.mp4).
 #output_dir - Directory where extracted images will be saved.
@@ -17,6 +19,7 @@ def extract_frames(video_path, output_dir, interval = 24):
 
     frame_count = 0
     saved_count = 0
+    discard_count = 0
 
     while True:
         ret, frame = cap.read()
@@ -24,19 +27,26 @@ def extract_frames(video_path, output_dir, interval = 24):
             break
 
         if frame_count % interval == 0:
-            filename = os.path.join(output_dir, f"frame_{saved_count:06d}.png")
-            cv2.imwrite(filename, frame)
-            saved_count += 1
-
+            grayscale = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+            variance = cv2.Laplacian(grayscale, cv2.CV_64F).var()
+            if variance < THRESHOLD:
+                discard_count += 1
+            else:
+                filename = os.path.join(output_dir, f"frame_{saved_count:06d}.png")
+                '''idk whether to keep saved_count so we know how many frames are kept
+                or to use frame_count so we know which frames are removed'''
+                cv2.imwrite(filename, frame)
+                saved_count += 1
         frame_count += 1
 
     cap.release()
     print(f"Extracted {saved_count} frames from {video_path} to {output_dir}")
+    print(f"Removed {discard_count} frames")
 
 #method for testing
 def test():
     video_path = "test.mp4"
-    output_dir = "test_dir"
+    output_dir = "testLap_dir"
     extract_frames(video_path, output_dir)
 
 def main():
