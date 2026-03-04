@@ -95,7 +95,7 @@ pip install rembg
 **Target:** Turn the dots into a solid, vertex-colored object (The Baseline).
 
 ### 3.1 Visualizer
-- [ ] Write `visualizer.py`
+- [x] Write `visualizer.py`
 - **Logic:** Use `open3d.io.read_point_cloud` to load the `.ply` file and display it
 
 ### 3.2 Dense Reconstruction (MVS)
