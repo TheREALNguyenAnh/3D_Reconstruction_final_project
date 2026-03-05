@@ -85,8 +85,8 @@ pip install rembg
   - Generates the camera poses and sparse points
 
 ### 2.5 Export Data
-- [ ] Write `export_data.py`
-- **Logic:** Convert COLMAP's `.bin` output to `.ply` (Point Cloud) using `colmap model_converter`
+- [x] ~~Write `export_data.py`~~ (Integrated into `run_colmap.py`)
+- **Logic:** Export handled via `model.export_PLY()` in the reconstruction script
 
 ---
 
@@ -99,12 +99,13 @@ pip install rembg
 - **Logic:** Use `open3d.io.read_point_cloud` to load the `.ply` file and display it
 
 ### 3.2 Dense Reconstruction (MVS)
-- [ ] Update `run_colmap.py` (Part 4)
-- **Logic:** Run the following commands:
-  - `colmap image_undistorter`
-  - `colmap patch_match_stereo`
-  - `colmap stereo_fusion`
+- [x] Update `run_colmap.py` (Part 4)
+- **Logic:** Uses native PyColmap 3.13 API:
+  - `pycolmap.undistort_images()`
+  - `pycolmap.patch_match_stereo()` (GPU)
+  - `pycolmap.stereo_fusion()`
 - **Result:** A high-density, colored `.ply` file (millions of points)
+- **Usage:** `python run_colmap.py` (runs sparse + dense)
 
 ### 3.3 Statistical Outlier Removal
 - [ ] Write `mesher.py` (Part 1)
