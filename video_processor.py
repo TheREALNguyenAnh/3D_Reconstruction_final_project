@@ -45,7 +45,7 @@ def extract_frames(video_path, output_dir, interval = 24):
 
 #method for testing
 def test():
-    video_path = "test.mp4"
+    video_path = "Plushy2.mp4"
     output_dir = "test_dir"
     extract_frames(video_path, output_dir, 17)
 
