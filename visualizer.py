@@ -17,4 +17,10 @@ def load_points(ply_path):
 # test function to verify that the visualizer can load and display a point cloud
 def test():
     print("Running visualizer test...")
-    load_points("test.ply")
+    load_points("/home/nguyenanh/Classes/CS435/3D_Reconstruction_final_project/colmap_workspace/sparse/sparse.ply")
+    
+def main():
+    test()
+
+if __name__ == "__main__":
+    main()
